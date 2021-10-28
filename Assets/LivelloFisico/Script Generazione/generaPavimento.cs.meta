@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d89228b96205ce5489a75fdb3d885ad3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - FloorTile: {fileID: 3721060900157612103, guid: d2b3c1e86aeb6bb4b922c990ff89177e, type: 3}
+  - FloorTile1: {fileID: 3721060900157612103, guid: 40ce9f04152cc704f8f2fa0a8c7f9367, type: 3}
+  - Terra: {fileID: 8808995803473927264, guid: 5014c88703ad3074eb9ed8eb0437ccb0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

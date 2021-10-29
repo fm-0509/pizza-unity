@@ -1,11 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayButtonScript : MonoBehaviour
 {
-   public void PlayGame(){
-      SceneManager.LoadScene(1);
+    // async scene load
+    // TODO: add loading screen
+    public void PlayGame(){
+        AsyncOperation load = SceneManager.LoadSceneAsync(1);
    }
+
+
+    
+    
+  
 }

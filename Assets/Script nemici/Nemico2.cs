@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
+
 public class Nemico2 : MonoBehaviour
 {
     NavMeshAgent agent;
     Transform target;
-    public float range=3.0f;
+    public float range;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,11 @@ public class Nemico2 : MonoBehaviour
     void Update()
     {
         float distanza= Vector3.Distance(target.position, transform.position);
-        if(distanza<=range)
+        if(distanza<=range){
             agent.SetDestination(target.position);
+            GetComponent<Animator>().SetBool("isInMovement", true);
+        }
+        else
+            GetComponent<Animator>().SetBool("isInMovement", false);
     }
 }

@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuSwipe.unity
     guid: 75a71d75a41f44353b303908a0ea44cb
-  - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 54f008e91b5d2374d877d09704353f45
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

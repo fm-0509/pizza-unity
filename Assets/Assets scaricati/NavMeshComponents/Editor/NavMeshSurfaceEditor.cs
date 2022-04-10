@@ -1,3 +1,4 @@
+#pragma warning disable 0169, 0414, CS0618, 0618
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

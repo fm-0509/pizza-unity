@@ -4,24 +4,25 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class Nemico2 : MonoBehaviour
+public class Nemico2 : Nemico
 {
-    NavMeshAgent agent;
-    Transform target;
+
     public float range=3.0f;
 
     // Start is called before the first frame update
-    void Start()
+        protected override void Init()
     {
-        target=GameObject.Find("Player").transform;
-        agent=GetComponent<NavMeshAgent>();
+       
     }
-
     // Update is called once per frame
     void Update()
     {
-        float distanza= Vector3.Distance(target.position, transform.position);
+        float distanza= Vector3.Distance(target.transform.position, transform.position);
         if(distanza<=range)
-            agent.SetDestination(target.position);
+            agent.SetDestination(target.transform.position);
+    }
+
+    public override void attack(){
+        //todo
     }
 }

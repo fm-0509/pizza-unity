@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Proiettile : MonoBehaviour
+public class PlayerShot : MonoBehaviour
 {
     public float velocita;
     private Vector3 targetPosition;
@@ -10,15 +10,19 @@ public class Proiettile : MonoBehaviour
 
     void Start()
     {
-        target=GameObject.FindGameObjectWithTag("Player");
-        targetPosition = target.transform.position;
+        target=Partita.getTarget();
+        if(target!=null){
+        targetPosition = target.transform.position; 
         Vector3 projectileDirection= (targetPosition-transform.position).normalized*velocita;
-        GetComponent<Rigidbody>().AddForce(projectileDirection, ForceMode.Impulse); 
+        Rigidbody r = GetComponentInChildren<Rigidbody>();
+        r.AddForce(projectileDirection, ForceMode.Impulse);
+        }
     }
 
-    void OnTriggerEnter(Collider hit){
-        if(hit.CompareTag("Player")){
-            Partita.convertiP(target).prendiDanno(25);
+      void OnTriggerEnter(Collider hit){
+        if(hit.gameObject.CompareTag("neemico")){
+            Debug.Log("hit");
+            Partita.converti(hit.gameObject).prendiDanno(25);
             Destroy(gameObject);
         }
         if(hit.CompareTag("Wall"))

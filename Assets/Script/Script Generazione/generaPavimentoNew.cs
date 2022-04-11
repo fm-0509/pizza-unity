@@ -17,6 +17,9 @@ public class generaPavimentoNew : MonoBehaviour
         
     }
 
+<<<<<<< HEAD
+    public static void generaLivello(Vector3 vettore, Quaternion q, GameObject prefab){
+=======
     public static void generaLivello(int livello, GameObject prefab){
 <<<<<<< HEAD
         Vector3 vettore = new Vector3(0,0,25*livello);
@@ -25,6 +28,7 @@ public class generaPavimentoNew : MonoBehaviour
 =======
         Vector3 vettore = new Vector3(0,0,30*livello);
         Quaternion q = new Quaternion(0,0,0,0);
+>>>>>>> dev
         Instantiate(prefab, vettore, q);
 >>>>>>> dev
     }

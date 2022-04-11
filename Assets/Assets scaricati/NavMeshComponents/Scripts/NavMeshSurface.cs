@@ -1,3 +1,4 @@
+#pragma warning disable CS0618, 0618
 using System.Collections.Generic;
 
 namespace UnityEngine.AI

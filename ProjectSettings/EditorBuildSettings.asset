@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+version https://git-lfs.github.com/spec/v1
+oid sha256:42333b38fce0af36c047f18bb2df8b0fb4e18c94c94c77fa7cc2c752b4533609
+size 348
+=======
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1045 &1
@@ -12,3 +17,4 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   m_configObjects: {}
+>>>>>>> dev

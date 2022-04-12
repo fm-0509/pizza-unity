@@ -159,7 +159,7 @@ MonoBehaviour:
   nemiciSpawnabili:
   - {fileID: 5890641099094046133, guid: b8be055bca50f5149a8ae14fa6528525, type: 3}
   - {fileID: 8231532009468477114, guid: d81f6beb0e29dca4a813ea702dd0e2df, type: 3}
-  asset: {fileID: 3149048055846186830, guid: 8469da6b58bfa8541a03a355bed6ede5, type: 3}
+  asset: {fileID: 9039204265764150057, guid: ead874f0c0a0b5b449dbbcabe96fe71c, type: 3}
   playerO: {fileID: 9039204265764150057, guid: 7fe603e349498b74cbc39c69d4f8fae9, type: 3}
 --- !u!65 &18476937
 BoxCollider:

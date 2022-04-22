@@ -138,13 +138,13 @@ AnimatorController:
   m_Name: Controllo zombie
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isInMovement
+  - m_Name: isAttacking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: isAttacking
+  - m_Name: isMooving
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0

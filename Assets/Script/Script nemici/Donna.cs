@@ -40,7 +40,7 @@ public class Donna : Nemico
     void Move(){
         if(time==moovingTime){
             randPos= new Vector3(Random.Range(-2, 2), 0, Random.Range(-2, 2)).normalized;
-           agent.SetDestination(transform.position+randPos*2);
+            agent.SetDestination(transform.position+randPos*2);
             time-=Time.deltaTime;
         }
         else if(time>=0){

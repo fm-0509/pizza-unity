@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.AI;
 
 public class Partita : MonoBehaviour
 {
@@ -11,42 +13,55 @@ public class Partita : MonoBehaviour
     public GameObject[] nemiciSpawnabili;
 
     private static List<GameObject> nemiciSpawnati=new List<GameObject>();
-    public GameObject asset;
+    public GameObject[] asset;
 
-    public GameObject playerO;
+    static int livelloCorrente=0;
+
+    private static Dictionary<int, GameObject> livelli= new Dictionary<int, GameObject>();
+
+    public NavMeshSurface navi;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        nemiciSpawnati.Add(Instantiate(nemiciSpawnabili[0], new Vector3(2,1,3), new Quaternion(0,0,0,0)));
-        nemiciSpawnati.Add(Instantiate(nemiciSpawnabili[0], new Vector3(6,1,10), new Quaternion(0,0,0,0)));
-        nemiciSpawnati.Add(Instantiate(nemiciSpawnabili[0], new Vector3(5,1,-5), new Quaternion(0,0,0,0)));
+        Array.Clear(ArrayOstacoli, 0, ArrayOstacoli.Length);
+        livello=0;
+        livelloCorrente=0;
+        livelli.Add(0, Instantiate(asset[0], new Vector3(0,0,0), asset[0].transform.rotation));
     }
 
     void FixedUpdate(){
-        if(nemiciSpawnati.Count==0)
-            OnCollisionEnter(null);
+        livelloCorrente=(int)(GameObject.FindGameObjectWithTag("Player").transform.position.z+11.5)/25;
+        if(livelloCorrente==livello){
+            generaLivelloSuccessivo();
+            getLivello(livelloCorrente-1).transform.GetChild(3).GetChild(0).GetComponent<Animator>().SetBool("isOpen", false);
+            getLivello(livelloCorrente).transform.GetChild(4).GetChild(0).GetComponent<BoxCollider>().enabled=true;
+            if(livelloCorrente!=0){
+            GeneraNemici.generaNemici(nemiciSpawnabili, livelloCorrente);
+            // GeneraOstacoli.generaOstacoli(ArrayOstacoli, Random.Range(0, 255), vettore, q);
+            }
+        }
+        if(nemiciSpawnati.Count==0){
+            getLivello(livello).transform.GetChild(4).GetChild(0).GetComponent<BoxCollider>().enabled=false;
+            getLivello(livelloCorrente).transform.GetChild(3).GetChild(0).GetComponent<Animator>().SetBool("isOpen", true);
+        }
     }
 
-    void OnCollisionEnter(Collision collision){
+    void generaLivelloSuccessivo(){
+        int i= UnityEngine.Random.Range(0, asset.Length);
         livello = livello + 1;
-        Vector3 vettore = new Vector3(0,0,30*livello);
-        Quaternion q = new Quaternion(0,0,0,0);
-        generaPavimentoNew.generaLivello(vettore, q, asset);
-        Genera();
-       // GeneraOstacoli.generaOstacoli(ArrayOstacoli, Random.Range(0, 255), vettore, q);
+        Vector3 vettore = new Vector3(0,0,25*livello);
+        livelli.Add(livello, Instantiate(asset[i], vettore, asset[i].transform.rotation));
+        navi.BuildNavMesh();
     }
 
+
+    public static GameObject getLivello(int liv){
+        return livelli[liv];
+    }
     public static List<GameObject> getListaNemici(){
         return nemiciSpawnati;
-    }
-
-    public void Genera(){
-        Debug.Log("hello");
-        nemiciSpawnati.Add(Instantiate(nemiciSpawnabili[0], new Vector3(2,1,3+30*livello), new Quaternion(0,0,0,0)));
-        nemiciSpawnati.Add(Instantiate(nemiciSpawnabili[0], new Vector3(6,1,10+30*livello), new Quaternion(0,0,0,0)));
-        nemiciSpawnati.Add(Instantiate(nemiciSpawnabili[0], new Vector3(5,1,-5+30*livello), new Quaternion(0,0,0,0)));
     }
 
     public static GameObject getTarget(){
@@ -89,12 +104,8 @@ public class Partita : MonoBehaviour
     }
 
     public static void distruggi(GameObject c){
-        Debug.Log(c);
-        Debug.Log(c.gameObject);
-        Debug.Log(c.gameObject.gameObject);
-        Destroy(c);
         getListaNemici().Remove(c.gameObject);
-        Debug.Log(getListaNemici().Count);
+        Destroy(c);
         Destroy(c.gameObject.GetComponentInParent<Transform>().gameObject);
     }
 }

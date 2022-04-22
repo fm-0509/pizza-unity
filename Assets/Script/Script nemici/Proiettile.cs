@@ -21,7 +21,7 @@ public class Proiettile : MonoBehaviour
             Partita.convertiP(target).prendiDanno(25);
             Destroy(gameObject);
         }
-        if(hit.CompareTag("Wall"))
+        if(hit.CompareTag("ostacolo"))
             Destroy(gameObject);
     }
 

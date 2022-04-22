@@ -8,6 +8,6 @@ public class navigable : MonoBehaviour
     public NavMeshSurface navi;
 
     public void startNav(){
-        navi.BuildNavMesh();
+        
     }
 }

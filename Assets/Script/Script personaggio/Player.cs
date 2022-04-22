@@ -19,8 +19,6 @@ public class Player : MonoBehaviour, Danneggiabile
 
     public float timeBetweenShoots;
 
-    float tempo;
-
     private GameObject vicino;
     public GameObject haiPerso;
 
@@ -31,50 +29,51 @@ public class Player : MonoBehaviour, Danneggiabile
 
     public void Start(){
         isMoving=true;
-        tempo=waitingTime;
+        GetComponentInChildren<Animator>().SetBool("isMooving", true);
+        GetComponentInChildren<Animator>().SetBool("gameOver", false);
         vita=100;
         danno = 25;
         GameObject vicino = calcolaVicino().Key;
-
     }
     public void FixedUpdate()
     {
         Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
  
         if(direction != Vector3.zero){
-            tempo=waitingTime;
             if(vicino!=null)
             Partita.converti(vicino).isVicino=false;
             isMoving=true;
-    }
+            GetComponentInChildren<Animator>().SetBool("isMooving", true);
+            rb.transform.Translate(new Vector3(0,0,1)*speed);
+            float angolo= Mathf.Atan2(variableJoystick.Horizontal, variableJoystick.Vertical)*Mathf.Rad2Deg;
+            transform.rotation= Quaternion.Euler(0, angolo, 0);
+        }
         if(direction == Vector3.zero){
             vicino = calcolaVicino().Key;
             isMoving=false;
+            GetComponentInChildren<Animator>().SetBool("isMooving", false);
             if(vicino!=null)
             attack(vicino);
         }
-        rb.transform.Translate(direction*speed);
-       // Vector3 guarda = Vector3.forward*variableJoystick.Vertical
-       //  rb.transform.LookAt(direction);
-        //Time.deltaTime
+        
     }
 
     public void attack(){
         vicino = calcolaVicino().Key;
-        attack(vicino);
+        if(vicino!=null)    
+            attack(vicino);
     }
 
     void attack(GameObject target){
         Vector3 differenza=target.transform.position-transform.position;
         float angolo= Mathf.Atan2(differenza.x, differenza.z)*Mathf.Rad2Deg;
+        transform.rotation= Quaternion.Euler(0, angolo, 0);
         if(waitingTime<=0){
-           Instantiate(proiettile, transform.position+differenza.normalized+new Vector3(0,1,0), Quaternion.Euler(90, angolo,0));
+            Instantiate(proiettile, transform.position+differenza.normalized+new Vector3(0,1,0), Quaternion.Euler(90, angolo,0));
             waitingTime=timeBetweenShoots;
-            GetComponent<Animator>().SetBool("isShooting", true);
         }
         else{
             waitingTime-=Time.deltaTime;
-            GetComponent<Animator>().SetBool("isShooting", false);
         }
     }
     KeyValuePair<GameObject,float> calcolaVicino(){
@@ -119,8 +118,10 @@ public class Player : MonoBehaviour, Danneggiabile
 
     public void prendiDanno(int damage){
         if((this.vita-damage)>0)
-        this.vita-=damage;
-        else
-        finisci(generatore, haiPerso);
+            this.vita-=damage;
+        else{
+            GetComponentInChildren<Animator>().SetBool("gameOver", true);
+            finisci(generatore, haiPerso);
+        }
     }
 }

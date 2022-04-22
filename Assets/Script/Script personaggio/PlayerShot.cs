@@ -21,11 +21,10 @@ public class PlayerShot : MonoBehaviour
 
       void OnTriggerEnter(Collider hit){
         if(hit.gameObject.CompareTag("neemico")){
-            Debug.Log("hit");
             Partita.converti(hit.gameObject).prendiDanno(25);
             Destroy(gameObject);
         }
-        if(hit.CompareTag("Wall"))
+        if(hit.CompareTag("ostacolo"))
             Destroy(gameObject);
     }
 

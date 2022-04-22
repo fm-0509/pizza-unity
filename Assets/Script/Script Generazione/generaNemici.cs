@@ -3,18 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class generaNemici : MonoBehaviour
+public class GeneraNemici : MonoBehaviour
 {
-
-    public GameObject[] enemy;
-
-    // Start is called before the first frame update
-    public void Start()
-    {
-        GameObject nemico;
-        nemico=Instantiate(enemy[0], new Vector3(3, 1.5f, 2) ,Quaternion.identity);
-        nemico=Instantiate(enemy[1], new Vector3(6, 1.5f, 2) , new Quaternion(0,1,0,0));
-        nemico=Instantiate(enemy[2], new Vector3(-2, 1.5f, 2) , new Quaternion(0,1,0,0));
+        public static void generaNemici(GameObject[] nemiciSpawnabili, int livello){
+        Partita.getListaNemici().Add(Instantiate(nemiciSpawnabili[0], new Vector3(2,1,3+25*livello), new Quaternion(0,0,0,0)));
+        Partita.getListaNemici().Add(Instantiate(nemiciSpawnabili[1], new Vector3(6,1,1+25*livello), new Quaternion(0,0,0,0)));
+        Partita.getListaNemici().Add(Instantiate(nemiciSpawnabili[0], new Vector3(5,1,-5+25*livello), new Quaternion(0,0,0,0)));
     }
 
 }

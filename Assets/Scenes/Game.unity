@@ -159,9 +159,10 @@ MonoBehaviour:
   nemiciSpawnabili:
   - {fileID: 5890641099094046133, guid: b8be055bca50f5149a8ae14fa6528525, type: 3}
   - {fileID: 8231532009468477114, guid: d81f6beb0e29dca4a813ea702dd0e2df, type: 3}
+  - {fileID: 2157426818757269228, guid: cee6a853ed5099046a975c244470c59a, type: 3}
   asset:
   - {fileID: 9039204265764150057, guid: 7fe603e349498b74cbc39c69d4f8fae9, type: 3}
-  - {fileID: 9039204265764150057, guid: 969d832786df6fa48a618244e1f494d0, type: 3}
+  - {fileID: 9039204265764150057, guid: 998f45d30f0106e44be5e8bd4e34cb70, type: 3}
   - {fileID: 9039204265764150057, guid: ead874f0c0a0b5b449dbbcabe96fe71c, type: 3}
   - {fileID: 9039204265764150057, guid: 483115b3446546a44a0e75abf408767f, type: 3}
   navi: {fileID: 848837480}
@@ -241,6 +242,98 @@ Transform:
   m_Father: {fileID: 2042514548}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &116779736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 116779737}
+  - component: {fileID: 116779739}
+  - component: {fileID: 116779738}
+  - component: {fileID: 116779740}
+  m_Layer: 5
+  m_Name: LivelloScritta
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &116779737
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116779736}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.001199}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 835757621}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -77.6, y: 850.5}
+  m_SizeDelta: {x: 924.8, y: 219.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &116779738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116779736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 100
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &116779739
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116779736}
+  m_CullTransparentMesh: 1
+--- !u!114 &116779740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116779736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8ccdc04817ef04c8a9d089d9399e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &204352615
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,6 +753,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 788160354}
+  - {fileID: 116779737}
   m_Father: {fileID: 1485650226}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -843,6 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af21b0f599ee6640afee8b953e74b8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vitaMax: 250
   speed: 0.1
   variableJoystick: {fileID: 788160355}
   rb: {fileID: 1041119003}
@@ -852,6 +947,7 @@ MonoBehaviour:
   timeBetweenShoots: 0.5
   haiPerso: {fileID: 7508810961901112900, guid: 0b0741db011a6854295cb2cf156a9b82, type: 3}
   generatore: {fileID: 1485650225}
+  assetBarraVita: {fileID: 5903162424191380411, guid: 2477e47e1f0f0ee43b09011db5ca15da, type: 3}
 --- !u!95 &1041119006
 Animator:
   serializedVersion: 3
@@ -862,7 +958,7 @@ Animator:
   m_GameObject: {fileID: 1041119003}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bef814f67d473a14aa9b798d0341d927, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2c1ceccb4906f2743aaf197ef8158808, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 1
   m_ApplyRootMotion: 0

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class Player : MonoBehaviour, Danneggiabile
+public class Player : MonoBehaviour
 {
     public int danno{get; set;}
     public int vita{get; set;}
+    public int vitaMax;
     public float speed;
     public DynamicJoystick variableJoystick;
     public GameObject rb;
@@ -24,19 +26,34 @@ public class Player : MonoBehaviour, Danneggiabile
 
     public GameObject generatore;
 
+    GameObject barraVita;
+    public GameObject assetBarraVita;
+
 
 
 
     public void Start(){
+        barraVita = Instantiate(assetBarraVita, this.gameObject.transform);
         isMoving=true;
         GetComponentInChildren<Animator>().SetBool("isMooving", true);
         GetComponentInChildren<Animator>().SetBool("gameOver", false);
-        vita=100;
+        vita=vitaMax;
         danno = 25;
         GameObject vicino = calcolaVicino().Key;
     }
+
+    void Update(){
+        barraVita.transform.rotation = Quaternion.identity;
+    }
     public void FixedUpdate()
     {
+        Color orange = new Color(255,165,0);
+        barraVita.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Image>().fillAmount = (float) vita / (float) vitaMax;
+        barraVita.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Image>().color = Color.green;
+        if((float) vita / (float) vitaMax <= 0.4f)
+             barraVita.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Image>().color = orange;
+
+
         Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
  
         if(direction != Vector3.zero){
@@ -113,7 +130,11 @@ public class Player : MonoBehaviour, Danneggiabile
         return nemico2distanza;
     }
      public static void finisci(GameObject g, GameObject h){
+        Application.Unload();
+        AsyncOperation unload = SceneManager.UnloadSceneAsync(1);
                 SceneManager.LoadSceneAsync(0);
+                
+
     }
 
     public void prendiDanno(int damage){

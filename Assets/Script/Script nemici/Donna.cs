@@ -12,12 +12,18 @@ public class Donna : Nemico
     public GameObject coltello;
     Vector3 lastPosition;
     Vector3 randPos;
+   /* GameObject barraVita;
+    public GameObject assetBarraVita; */
     // Start is called before the first frame update
     protected override void Init()
     {
+     barraVita = Instantiate(assetBarraVita, this.gameObject.transform);
+        isMoving=true;
         time=moovingTime;
         ray=rayTime;
         laser=GetComponent<LineRenderer>();
+        laser.startWidth = 0.2f;
+        laser.endWidth = 0.2f;
     }
 
 
@@ -25,13 +31,14 @@ public class Donna : Nemico
     void Update()
     {
         if(isMoving){
-            GetComponent<Animator>().SetBool("IsMooving", true);
-            GetComponent<Animator>().SetBool("isAttacking", false);
+            animator.SetBool("IsMooving", true);
+            animator.SetBool("isAttacking", false);
             laser.enabled=false;
             Move();
         }
         if(isAttacking){
-            GetComponent<Animator>().SetBool("IsMooving", false);
+            animator.SetBool("IsMooving", false);
+            animator.SetBool("isAttacking", true);
             laser.SetPosition(0, transform.position+new Vector3(0,1,0));
             attack();
         }
@@ -57,8 +64,8 @@ public class Donna : Nemico
         Vector3 differenza=target.transform.position-transform.position;
         float angolo= Mathf.Atan2(differenza.x, differenza.z)*Mathf.Rad2Deg+90;
         transform.rotation= Quaternion.Euler(0, angolo-90, 0);
-        if(ray<=0.7f){
-            GetComponent<Animator>().SetBool("isAttacking", true);
+        if(ray<=0.4f){
+            animator.SetBool("isAttacking", true);
         }
 
         if(ray>=0){
@@ -75,8 +82,8 @@ public class Donna : Nemico
         }
     }
 
-    void OnTriggertEnter(Collider hit){
+    void OnTriggerEnter(Collider hit){
         if(hit.CompareTag("Wall"))
-            GetComponent<NavMeshAgent>().SetDestination(transform.position-randPos*0.2f);
+            agent.SetDestination(transform.position-randPos*0.2f);
     }
 }

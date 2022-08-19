@@ -25,19 +25,22 @@ public class Partita : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Array.Clear(ArrayOstacoli, 0, ArrayOstacoli.Length);
+        nemiciSpawnati.Clear();
+        livelli.Clear();
         livello=0;
         livelloCorrente=0;
         livelli.Add(0, Instantiate(asset[0], new Vector3(0,0,0), asset[0].transform.rotation));
+        getLivello(livelloCorrente).transform.GetChild(4).GetChild(0).GetComponent<BoxCollider>().enabled=true;
     }
+
 
     void FixedUpdate(){
         livelloCorrente=(int)(GameObject.FindGameObjectWithTag("Player").transform.position.z+11.5)/25;
         if(livelloCorrente==livello){
             generaLivelloSuccessivo();
-            getLivello(livelloCorrente-1).transform.GetChild(3).GetChild(0).GetComponent<Animator>().SetBool("isOpen", false);
-            getLivello(livelloCorrente).transform.GetChild(4).GetChild(0).GetComponent<BoxCollider>().enabled=true;
             if(livelloCorrente!=0){
+            getLivello(livelloCorrente-1).transform.GetChild(3).GetChild(0).GetComponent<Animator>().SetBool("isOpen", false);
+            getLivello(livelloCorrente).transform.GetChild(4).GetChild(0).GetComponent<BoxCollider>().enabled=true;         
             GeneraNemici.generaNemici(nemiciSpawnabili, livelloCorrente);
             // GeneraOstacoli.generaOstacoli(ArrayOstacoli, Random.Range(0, 255), vettore, q);
             }
@@ -79,6 +82,10 @@ public class Partita : MonoBehaviour
         return null;
     }
 
+    public static int getLivelloCorrente(){
+        return livelloCorrente;
+    }
+
     public static Nemico converti(GameObject c){
         if(c!=null){
         if(c.GetComponentInChildren<Poliziotto>()!=null)
@@ -88,7 +95,7 @@ public class Partita : MonoBehaviour
         else if(c.GetComponentInChildren<Nemico2>()!=null)
            return (Nemico) c.GetComponentInChildren<Nemico2>();
         else if(c.GetComponentInChildren<Zombie>()!=null)
-            return (Nemico) c.GetComponentInChildren<Poliziotto>();
+            return (Nemico) c.GetComponentInChildren<Zombie>();
         }
             return null;
     }
@@ -107,8 +114,13 @@ public class Partita : MonoBehaviour
         getListaNemici().Remove(c.gameObject);
         Destroy(c);
         Destroy(c.gameObject.GetComponentInParent<Transform>().gameObject);
+    } 
+       public static GameObject getPlayer(){
+        return GameObject.FindGameObjectWithTag("Player");
     }
 }
+
+
 
 
 

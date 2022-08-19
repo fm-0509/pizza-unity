@@ -4,8 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - assetBarraVita: {fileID: 5903162424191380411, guid: 2477e47e1f0f0ee43b09011db5ca15da, type: 3}
   - proiettile: {fileID: 7856333657905352821, guid: a4e28b53738ef1e46ae32d78e9053677, type: 3}
-  - target: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

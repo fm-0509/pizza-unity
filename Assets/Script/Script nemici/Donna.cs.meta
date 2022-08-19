@@ -3,7 +3,9 @@ guid: 49dd0abdfb6a82844b82bb7d8bb69115
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - assetBarraVita: {fileID: 5903162424191380411, guid: 2477e47e1f0f0ee43b09011db5ca15da, type: 3}
+  - coltello: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

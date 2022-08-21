@@ -155,14 +155,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a292142d0febb0d49bcd3cbedd9165a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArrayOstacoli: []
+  ArrayOstacoli:
+  - {fileID: 956868943003904415, guid: b3376d1572ab8ea42b608d9ab804845e, type: 3}
+  - {fileID: 8789386991950284264, guid: 1631d10fe7b99954d820650b6f720b9b, type: 3}
+  - {fileID: 3623828867816115593, guid: 2ae6354c01c027e45bafab27db494002, type: 3}
+  - {fileID: 2801415164560987651, guid: c8f44278b4f40dc4692725b5799ebd13, type: 3}
+  - {fileID: 5158511478774952898, guid: 8eb9e0c0821398a46a8628fa1272fa28, type: 3}
+  - {fileID: 8484281738374690054, guid: f326e28b0803f3649971c4e7346585d1, type: 3}
   nemiciSpawnabili:
   - {fileID: 5890641099094046133, guid: b8be055bca50f5149a8ae14fa6528525, type: 3}
   - {fileID: 8231532009468477114, guid: d81f6beb0e29dca4a813ea702dd0e2df, type: 3}
   - {fileID: 2157426818757269228, guid: cee6a853ed5099046a975c244470c59a, type: 3}
   asset:
   - {fileID: 9039204265764150057, guid: 7fe603e349498b74cbc39c69d4f8fae9, type: 3}
-  - {fileID: 9039204265764150057, guid: 998f45d30f0106e44be5e8bd4e34cb70, type: 3}
+  - {fileID: 9039204265764150057, guid: b23af7c34e3606947beb04099c436b64, type: 3}
   - {fileID: 9039204265764150057, guid: ead874f0c0a0b5b449dbbcabe96fe71c, type: 3}
   - {fileID: 9039204265764150057, guid: 483115b3446546a44a0e75abf408767f, type: 3}
   navi: {fileID: 848837480}
@@ -331,7 +337,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 116779736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b8ccdc04817ef04c8a9d089d9399e1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e6edf0b39dbd114096062e31ccbce0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &204352615
@@ -947,7 +953,7 @@ MonoBehaviour:
   timeBetweenShoots: 0.5
   haiPerso: {fileID: 7508810961901112900, guid: 0b0741db011a6854295cb2cf156a9b82, type: 3}
   generatore: {fileID: 1485650225}
-  assetBarraVita: {fileID: 5903162424191380411, guid: 2477e47e1f0f0ee43b09011db5ca15da, type: 3}
+  assetBarraVita: {fileID: 5903162424191380411, guid: 1b34452712c06e4428f5facfb05d3354, type: 3}
 --- !u!95 &1041119006
 Animator:
   serializedVersion: 3
@@ -958,7 +964,7 @@ Animator:
   m_GameObject: {fileID: 1041119003}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2c1ceccb4906f2743aaf197ef8158808, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7b77348f7e1fce34d992459d7ddbb0f3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 1
   m_ApplyRootMotion: 0

@@ -26,6 +26,8 @@ public class PlayerShot : MonoBehaviour
         }
         if(hit.CompareTag("ostacolo"))
             Destroy(gameObject);
+        if(hit.CompareTag("Wall"))
+            Destroy(gameObject);
     }
 
     void Update(){

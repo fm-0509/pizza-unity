@@ -13,6 +13,8 @@ public class Partita : MonoBehaviour
     public GameObject[] nemiciSpawnabili;
 
     private static List<GameObject> nemiciSpawnati=new List<GameObject>();
+
+    private static Dictionary<int, List<GameObject>> ostacoliSpawanti=new Dictionary<int, List<GameObject>>();
     public GameObject[] asset;
 
     static int livelloCorrente=0;
@@ -27,6 +29,7 @@ public class Partita : MonoBehaviour
     {
         nemiciSpawnati.Clear();
         livelli.Clear();
+        ostacoliSpawanti.Clear();
         livello=0;
         livelloCorrente=0;
         livelli.Add(0, Instantiate(asset[0], new Vector3(0,0,0), asset[0].transform.rotation));
@@ -42,7 +45,7 @@ public class Partita : MonoBehaviour
             getLivello(livelloCorrente-1).transform.GetChild(3).GetChild(0).GetComponent<Animator>().SetBool("isOpen", false);
             getLivello(livelloCorrente).transform.GetChild(4).GetChild(0).GetComponent<BoxCollider>().enabled=true;         
             GeneraNemici.generaNemici(nemiciSpawnabili, livelloCorrente);
-            // GeneraOstacoli.generaOstacoli(ArrayOstacoli, Random.Range(0, 255), vettore, q);
+            GeneraOstacoli.generaOstacoli(ArrayOstacoli, livelloCorrente);
             }
         }
         if(nemiciSpawnati.Count==0){
@@ -50,6 +53,19 @@ public class Partita : MonoBehaviour
             getLivello(livelloCorrente).transform.GetChild(3).GetChild(0).GetComponent<Animator>().SetBool("isOpen", true);
         }
     }
+
+    void LateUpdate(){
+         if(livelli.ContainsKey(livelloCorrente-2)){
+            Destroy(getLivello(livelloCorrente-2));
+            Destroy(getLivello(livelloCorrente-2).gameObject.GetComponentInParent<Transform>().gameObject);
+            livelli.Remove(livelloCorrente-2);
+            foreach(GameObject o in ostacoliSpawanti[livello-2]){
+                Destroy(o);
+                Destroy(o.gameObject.GetComponentInParent<Transform>().gameObject);
+            }
+            ostacoliSpawanti.Remove(livello-2);
+         }
+    }    
 
     void generaLivelloSuccessivo(){
         int i= UnityEngine.Random.Range(0, asset.Length);
@@ -65,6 +81,10 @@ public class Partita : MonoBehaviour
     }
     public static List<GameObject> getListaNemici(){
         return nemiciSpawnati;
+    }
+
+    public static  Dictionary<int, List<GameObject>> getOstacoli(){
+        return ostacoliSpawanti;
     }
 
     public static GameObject getTarget(){

@@ -130,11 +130,8 @@ public class Player : MonoBehaviour
         return nemico2distanza;
     }
      public static void finisci(GameObject g, GameObject h){
-        Application.Unload();
         AsyncOperation unload = SceneManager.UnloadSceneAsync(1);
-                SceneManager.LoadSceneAsync(0);
-                
-
+                SceneManager.LoadSceneAsync(2);
     }
 
     public void prendiDanno(int damage){

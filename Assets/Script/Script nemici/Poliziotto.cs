@@ -11,15 +11,14 @@ public class Poliziotto : Nemico
     public GameObject proiettile;
     private List<GameObject> proiettiliVolanti;
     
-    /*public GameObject assetBarraVita;
-    GameObject barraVita;*/
+
     // Start is called before the first frame update
      protected override void Init()
     {
         barraVita = Instantiate(this.assetBarraVita, this.gameObject.transform);
         proiettiliVolanti = new List<GameObject>();
         waitingTime=timeBetweenShoots;
-      //  GetComponent<Animator>().SetBool("isShooting", false);
+        animator.SetBool("isShooting", false);
     }
 
     // Update is called once per frame
@@ -36,11 +35,11 @@ public class Poliziotto : Nemico
         if(waitingTime<=0){
             proiettiliVolanti.Add(Instantiate(proiettile, transform.position+differenza.normalized, Quaternion.Euler(90, angolo,0))); 
             waitingTime=timeBetweenShoots;
-            //GetComponent<Animator>().SetBool("isShooting", true);
+            animator.SetBool("isShooting", true);
         }
         else{
             waitingTime-=Time.deltaTime;
-           // GetComponent<Animator>().SetBool("isShooting", false);
+            animator.SetBool("isShooting", false);
         }
 
     }

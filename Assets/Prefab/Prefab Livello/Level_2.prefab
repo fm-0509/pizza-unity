@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 6087239325243813985}
   m_Layer: 0
   m_Name: Level_2
-  m_TagString: ostacolo
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

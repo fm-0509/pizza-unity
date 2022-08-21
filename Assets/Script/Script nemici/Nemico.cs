@@ -32,7 +32,7 @@ public abstract class Nemico : MonoBehaviour
     void Start(){
         target=GameObject.FindGameObjectWithTag("Player");
         agent=GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animator = gameObject.transform.GetChild(0).GetComponent<Animator>();
         isMoving=false;
         isAttacking=false;
         isVicino=false;

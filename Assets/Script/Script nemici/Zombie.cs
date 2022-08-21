@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class Zombie : Nemico
 {
 
-    public float range, stoppingtimemax;
+    public float range, stoppingtime, attackTime;
     protected float timeToStop, angolo;
 
 
@@ -15,8 +15,8 @@ public class Zombie : Nemico
         barraVita = Instantiate(assetBarraVita, this.gameObject.transform);
         isMoving=true;
         angolo=0;
-        animator.SetBool("isInMovement", true);
-        timeToStop=stoppingtimemax;
+        animator.SetBool("isMooving", true);
+        timeToStop=stoppingtime;
         agent.speed = 9.0f;
         StartCoroutine(aspetta1());
         
@@ -33,21 +33,25 @@ public class Zombie : Nemico
 
     IEnumerator aspetta1(){
         while(true){
-        interruttore();
-        yield return new WaitForSeconds(stoppingtimemax);
+        float tempo=interruttore();
+        yield return new WaitForSeconds(tempo);
         }
     }
 
-    public void interruttore(){
+    public float interruttore(){
         if(isMoving && !agent.isStopped){
             isMoving=false;
             agent.isStopped = true;
+            animator.SetBool("isMooving", false);
+            return stoppingtime;
         }
             
         else{
             isMoving=true;
             agent.isStopped = false;
             agent.SetDestination(target.transform.position);
+            animator.SetBool("isMooving", true);
+            return attackTime;
         }
             
     }

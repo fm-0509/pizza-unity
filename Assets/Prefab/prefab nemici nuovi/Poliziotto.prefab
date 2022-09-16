@@ -80,7 +80,7 @@ MonoBehaviour:
   isMoving: 0
   isAttacking: 0
   isVicino: 0
-  assetBarraVita: {fileID: 5903162424191380411, guid: 1b34452712c06e4428f5facfb05d3354, type: 3}
+  assetBarraVita: {fileID: 5903162424191380411, guid: 2477e47e1f0f0ee43b09011db5ca15da, type: 3}
   timeBetweenShoots: 2
   proiettile: {fileID: 7856333657905352821, guid: a4e28b53738ef1e46ae32d78e9053677, type: 3}
 --- !u!1001 &6088980104893772631

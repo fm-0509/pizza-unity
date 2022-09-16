@@ -74,7 +74,7 @@ MonoBehaviour:
   isMoving: 0
   isAttacking: 0
   isVicino: 0
-  assetBarraVita: {fileID: 5903162424191380411, guid: 1b34452712c06e4428f5facfb05d3354, type: 3}
+  assetBarraVita: {fileID: 5903162424191380411, guid: 2477e47e1f0f0ee43b09011db5ca15da, type: 3}
   range: 0.8
   stoppingtime: 1.5
   attackTime: 0.9

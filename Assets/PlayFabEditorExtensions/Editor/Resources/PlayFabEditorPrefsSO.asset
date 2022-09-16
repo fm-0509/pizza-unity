@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
+  m_Name: PlayFabEditorPrefsSO
+  m_EditorClassIdentifier: 
+  DevAccountEmail: francesco.mrt@gmail.com
+  DevAccountToken: 3383j8uk5cyb47pg98drjfee78uxdxxm4u9ergn4b73q63snm6bswtor6oj1o8s8nit5uop8bpeg7sxaha3ympzwhuikkcac8tjmbgjdfifhxjrjp6wes3349k53rsnrcms6hic3ehwcur55afpdw3keup1ok45rmrmwy7atbtzyp74qrojyggkjnn9jyu8t9by6kqex
+  SelectedStudio: RM3
+  SdkPath: Assets/PlayFabSDK
+  EdExPath: 
+  LocalCloudScriptPath: H:/Francesco Martino/Download_new/pizza-unity/Assets/Script/Script_leaderboard/cloudscript.js
+  PanelIsShown: 0
+  curMainMenuIdx: 1
+  curSubMenuIdx: 0

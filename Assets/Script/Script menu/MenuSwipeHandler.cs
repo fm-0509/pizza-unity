@@ -2,28 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class MenuSwipeHandler : MonoBehaviour
 {
     public GameObject scrollbar;
     private float scroll_pos = 0;
     float[] pos;
+    float distance;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayfabManager.Login(success, error);
+        pos = new float[transform.childCount];
+        distance = 1f / (pos.Length - 1f);
+        for (int i = 0; i < pos.Length; i++)
+        {
+            pos[i] = distance * i;
+        }
+        scroll_pos = pos[1];
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        pos = new float[transform.childCount];
-        float distance = 1f / (pos.Length - 1f);
-        for (int i = 0; i < pos.Length; i++)
-        {
-            pos[i] = distance * i;
-        }
+       
 
         if (Input.GetMouseButton(0))
         {
@@ -58,4 +64,16 @@ public class MenuSwipeHandler : MonoBehaviour
         }/**/
 
     }
+
+     private void success(LoginResult result)
+	{
+		Debug.LogError("Login effettuato");
+		
+	}
+
+	private void error(PlayFabError error)
+	{
+		Debug.LogError("ERROR: Login Failed. Verify Title ID is set correctly.");
+		Debug.LogError(error.GenerateErrorReport());
+	}
 }

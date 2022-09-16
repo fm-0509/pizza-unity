@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuSwipe.unity
     guid: 75a71d75a41f44353b303908a0ea44cb
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: f7a19e32544c84e42823981849a36453
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
-    guid: 954d25dd9ded7b149baadc17b3c5a93d
+    guid: 83f5099ed19f15341a13e6444fd39650
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard.unity
+    guid: 7dc34797478a0c9469ace446af232346
   m_configObjects: {}

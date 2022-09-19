@@ -15,8 +15,4 @@ public class PlayButtonScript : MonoBehaviour
     AsyncOperation load = SceneManager.LoadSceneAsync(3);
    }
 
-
-    
-    
-  
 }

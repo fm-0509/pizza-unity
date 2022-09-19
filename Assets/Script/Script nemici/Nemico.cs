@@ -48,7 +48,6 @@ public abstract class Nemico : MonoBehaviour
 
     void OnCollisionEnter(Collision hit){
         if(hit.collider.CompareTag("Player")){
-            Debug.Log("Player");
             Partita.convertiP(hit.gameObject).prendiDanno(danno);
         }
         if(hit.collider.CompareTag("Wall"))

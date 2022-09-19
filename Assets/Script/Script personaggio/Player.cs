@@ -22,10 +22,7 @@ public class Player : MonoBehaviour
     public float timeBetweenShoots;
 
     private GameObject vicino;
-    public GameObject haiPerso;
-
-    public GameObject generatore;
-
+  
     GameObject barraVita;
     public GameObject assetBarraVita;
 
@@ -36,7 +33,6 @@ public class Player : MonoBehaviour
         barraVita = Instantiate(assetBarraVita, this.gameObject.transform);
         isMoving=true;
         GetComponentInChildren<Animator>().SetBool("isMooving", true);
-        GetComponentInChildren<Animator>().SetBool("gameOver", false);
         vita=vitaMax;
         danno = 25;
         GameObject vicino = calcolaVicino().Key;
@@ -129,17 +125,21 @@ public class Player : MonoBehaviour
     }
         return nemico2distanza;
     }
-     public static void finisci(GameObject g, GameObject h){
+     public static void finisci(){
         AsyncOperation unload = SceneManager.UnloadSceneAsync(1);
                 SceneManager.LoadSceneAsync(2);
+    }
+
+     public static void finisci2(){
+        AsyncOperation unload = SceneManager.UnloadSceneAsync(1);
+        SceneManager.LoadScene(0);
     }
 
     public void prendiDanno(int damage){
         if((this.vita-damage)>0)
             this.vita-=damage;
         else{
-            GetComponentInChildren<Animator>().SetBool("gameOver", true);
-            finisci(generatore, haiPerso);
+            finisci();
         }
     }
 }

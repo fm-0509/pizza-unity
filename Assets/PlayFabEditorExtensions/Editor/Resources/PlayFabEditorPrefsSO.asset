@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
   DevAccountEmail: francesco.mrt@gmail.com
-  DevAccountToken: 3383j8uk5cyb47pg98drjfee78uxdxxm4u9ergn4b73q63snm6bswtor6oj1o8s8nit5uop8bpeg7sxaha3ympzwhuikkcac8tjmbgjdfifhxjrjp6wes3349k53rsnrcms6hic3ehwcur55afpdw3keup1ok45rmrmwy7atbtzyp74qrojyggkjnn9jyu8t9by6kqex
+  DevAccountToken: 8ewngo3pdo4os7h1pgmsgrduinibcsr1tfpcox18sbx5fyxfx9gr7rhoxoi1qi4hsa3dioj3za7bn7qum4t33zgrwsewgpjcn5hzrketi6srq6ot4ewoypa9soj6ey5ssdcfoeoy5p7os5f5rrrb9mzyf8edo4inwogpzqrkb846wnnjsh1hu53pdjix8noxyki8qm7b
   SelectedStudio: RM3
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
-  LocalCloudScriptPath: H:/Francesco Martino/Download_new/pizza-unity/Assets/Script/Script_leaderboard/cloudscript.js
+  LocalCloudScriptPath: H:/Francesco Martino/Download_new/Telegram Desktop/pizza-unity/pizza-unity/Assets/PlayFabEditorExtensions/Editor/Resources/.CloudScript.js
   PanelIsShown: 0
   curMainMenuIdx: 1
-  curSubMenuIdx: 0
+  curSubMenuIdx: 1

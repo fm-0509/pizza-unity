@@ -30,7 +30,6 @@ public class DynamicJoystick : Joystick
       //  Vector3 appoggio = camera.ScreenToWorldPoint((new Vector3(Screen.width/2.0f,0,Screen.height/7.5f)));
          Vector3 appoggio = camera.ScreenToWorldPoint((new Vector3(-3240,0,256)));
         posRelativa-=appoggio;
-        Debug.Log(posRelativa.ToString());
         base.OnPointerDown(eventData);
     }
 

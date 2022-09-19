@@ -8,33 +8,29 @@ public class PauseMenuScript : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject pauseButton;
-    private GameObject joystick;
+    [SerializeField] private GameObject joystick;
 
-    private float initTimeScale = 0f;
-
-    void Start()
-    {
-        if(joystick == null)
-            joystick = GameObject.FindWithTag("GameController");
-        this.initTimeScale = Time.timeScale;
-    }
+ 
 
     public void PauseGame()
     {
-        initTimeScale = Time.timeScale;
         Time.timeScale = 0f;
+        AudioListener.pause = true;
+
         pauseMenu.SetActive(true);
-        pauseButton.SetActive(false);
         joystick.SetActive(false);
+        pauseButton.SetActive(false);
         
     }
 
     public void ResumeGame()
     {
-        Time.timeScale = initTimeScale;
+        Time.timeScale = 1;
+        AudioListener.pause = false;
         pauseMenu.SetActive(false);
-        pauseButton.SetActive(true);
         joystick.SetActive(true);
+        pauseButton.SetActive(true);
+        
     }
 
     public void QuitGame()
@@ -44,7 +40,8 @@ public class PauseMenuScript : MonoBehaviour
 
     public void backMenu()
     {
-        AsyncOperation load = SceneManager.LoadSceneAsync(0);
-
+        Time.timeScale = 1;
+        Player.finisci2();
+        AudioListener.pause = false; 
     }
 }

@@ -1,35 +1,36 @@
+using PlayFab;
+using PlayFab.ClientModels;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using PlayFab;
-using PlayFab.ClientModels;
+//using PlayFab;
+//using PlayFab.ClientModels;
 
 public class MenuSwipeHandler : MonoBehaviour
 {
     public GameObject scrollbar;
-    private float scroll_pos = 0;
     float[] pos;
-    float distance;
+    float distance = 1f / (3- 1f);
+    private float scroll_pos;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayfabManager.Login(success, error);
-        pos = new float[transform.childCount];
-        distance = 1f / (pos.Length - 1f);
+        scroll_pos = distance;
+        PlayfabManager.Login(onSuccess, error);
+    }
+
+    
+    // Update is called once per frame
+    void Update()
+    {
+        pos = new float[3];
         for (int i = 0; i < pos.Length; i++)
         {
             pos[i] = distance * i;
         }
-        scroll_pos = pos[1];
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
 
         if (Input.GetMouseButton(0))
         {
@@ -65,7 +66,7 @@ public class MenuSwipeHandler : MonoBehaviour
 
     }
 
-     private void success(LoginResult result)
+    /* private void success(LoginResult result)
 	{
 		Debug.LogError("Login effettuato");
 		
@@ -75,5 +76,18 @@ public class MenuSwipeHandler : MonoBehaviour
 	{
 		Debug.LogError("ERROR: Login Failed. Verify Title ID is set correctly.");
 		Debug.LogError(error.GenerateErrorReport());
-	}
+	}*/
+
+    private void error(PlayFabError obj)
+    {
+        Debug.Log("PlayFabLoginError " + obj.GenerateErrorReport());
+    }
+
+    private void onSuccess(LoginResult obj)
+    {
+        Debug.Log("Login OK");
+    }
+
+
+
 }

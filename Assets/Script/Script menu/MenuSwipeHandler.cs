@@ -66,17 +66,6 @@ public class MenuSwipeHandler : MonoBehaviour
 
     }
 
-    /* private void success(LoginResult result)
-	{
-		Debug.LogError("Login effettuato");
-		
-	}
-
-	private void error(PlayFabError error)
-	{
-		Debug.LogError("ERROR: Login Failed. Verify Title ID is set correctly.");
-		Debug.LogError(error.GenerateErrorReport());
-	}*/
 
     private void error(PlayFabError obj)
     {

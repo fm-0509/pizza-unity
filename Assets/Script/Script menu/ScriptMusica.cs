@@ -1,10 +1,12 @@
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class ScriptMusica : MonoBehaviour
 {
-     public static ScriptMusica instance; 
+    public static ScriptMusica instance;
 
     private void Awake()
     {
@@ -12,7 +14,15 @@ public class ScriptMusica : MonoBehaviour
 
         if (instance == null) 
         {
-            instance = this; 
+            instance = this;
+          /*  if (PlayerPrefs.HasKey("volume"))
+            {
+                instance.ChangeVolume(PlayerPrefs.GetFloat("volume"));
+                Debug.Log("volume found: " + PlayerPrefs.GetFloat("volume"));
+                    
+
+            }*/
+
         }
         else 
         {
@@ -22,6 +32,12 @@ public class ScriptMusica : MonoBehaviour
 
     public void ChangeVolume(float value){
         AudioListener.volume=value;
+        PlayerPrefs.SetFloat("volume", value);
+       
+        PlayerPrefs.Save();
+       // Debug.Log("volume set to "+AudioListener.volume);
+
     }
+
 }
 

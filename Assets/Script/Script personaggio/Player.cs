@@ -82,7 +82,8 @@ public class Player : MonoBehaviour
         float angolo= Mathf.Atan2(differenza.x, differenza.z)*Mathf.Rad2Deg;
         transform.rotation= Quaternion.Euler(0, angolo, 0);
         if(waitingTime<=0){
-            Instantiate(proiettile, transform.position+differenza.normalized+new Vector3(0,1,0), Quaternion.Euler(90, angolo,0));
+            Instantiate(proiettile, transform.position+differenza.normalized+new Vector3(0,1,0), Quaternion.Euler(0, angolo,0));
+         
             waitingTime=timeBetweenShoots;
         }
         else{

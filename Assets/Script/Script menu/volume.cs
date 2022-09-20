@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class volume : MonoBehaviour
 {
-    [SerializeField] private Slider slider;
+    public Slider slider;
     void Start()
     {
+        if(PlayerPrefs.HasKey("volume"))
+            slider.value = PlayerPrefs.GetFloat("volume");
         ScriptMusica.instance.ChangeVolume(slider.value);
-        slider.onValueChanged.AddListener(val=> ScriptMusica.instance.ChangeVolume(val));
+        slider.onValueChanged.AddListener(val => ScriptMusica.instance.ChangeVolume(val));
     }
+
+   
 
 }

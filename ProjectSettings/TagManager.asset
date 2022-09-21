@@ -9,6 +9,7 @@ TagManager:
   - Nemico
   - vicino
   - neemico
+  - musica
   layers:
   - Default
   - TransparentFX

@@ -33,7 +33,7 @@ public class Poliziotto : Nemico
         float angolo= Mathf.Atan2(differenza.x, differenza.z)*Mathf.Rad2Deg;
         transform.rotation= Quaternion.Euler(0, angolo, 0);
         if(waitingTime<=0){
-            proiettiliVolanti.Add(Instantiate(proiettile, transform.position+differenza.normalized, Quaternion.Euler(90, angolo,0))); 
+            proiettiliVolanti.Add(Instantiate(proiettile, transform.position+differenza.normalized+new Vector3(0,1,0), Quaternion.Euler(90, angolo,0))); 
             waitingTime=timeBetweenShoots;
             animator.SetBool("isShooting", true);
         }

@@ -19,7 +19,7 @@ public class MenuSwipeHandler : MonoBehaviour
     void Start()
     {
         scroll_pos = distance;
-        PlayfabManager.Login(onSuccess, error);
+        //PlayfabManager.Login(onSuccess, error);
     }
 
     

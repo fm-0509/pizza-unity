@@ -12,9 +12,11 @@ public class Gameover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayfabManager.IsLoggedIn)
+        if(PlayfabManager.IsLoggedIn){
             PlayfabManager.UpdateStatistic("level_leaderboard", Partita.getLivelloCorrente());
-        gameObject.GetComponent<Text>().text="Livello " + Partita.getLivelloCorrente();
+            Debug.Log(Partita.getLivelloCorrente());
+        }
+        gameObject.GetComponent<Text>().text="Level " + Partita.getLivelloCorrente();
 
 
     }

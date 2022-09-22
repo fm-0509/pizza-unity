@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Authentication : MonoBehaviour
 {
@@ -16,6 +19,8 @@ public class Authentication : MonoBehaviour
     [SerializeField] private GameObject registerButton;
 
     [SerializeField] private GameObject logoutButton;
+
+    [SerializeField] private GameObject loginName;
 
 
     public InputField nomeR;
@@ -32,10 +37,16 @@ public class Authentication : MonoBehaviour
 
     private bool flag;
 
+    private string Username;
+    private string playfabId;
+
     void Start() {
         PlayFabAuthService.OnLoginSuccess += OnLoginSuccess;
         PlayFabAuthService.OnPlayFabError += OnPlayFaberror;
     }
+
+
+
 
     public void apriLogin(){
         loginPanel.SetActive(true);
@@ -73,9 +84,44 @@ public class Authentication : MonoBehaviour
         loginPanel.SetActive(false);
     }
 
+
+    public void backToSelect()
+    {
+        loginButton.SetActive(true);
+        registerButton.SetActive(true);
+        logoutButton.SetActive(false);
+        loginPanel.SetActive(false);
+        registerPanel.SetActive(false);
+
+
+    }
+
+
+    public void showLoggedInDetails()
+    {
+        loginButton.SetActive(false);
+        registerButton.SetActive(false);
+        registerPanel.SetActive(false);
+        logoutButton.SetActive(true);
+        loginName.GetComponent<Text>().text = "Logged in as "+this.Username+ " ("+this.playfabId+")";
+
+        
+    }
+
+    private void OnDataSuccess(GetAccountInfoResult obj)
+    {
+        this.Username = obj.AccountInfo.Username;
+        this.playfabId = obj.AccountInfo.PlayFabId;
+        this.showLoggedInDetails();
+        
+    }
+
     private void OnLoginSuccess(PlayFab.ClientModels.LoginResult result)
     {
         Debug.LogFormat("Logged In as: {0}", result.PlayFabId);
+
+        leaderboard.Instance().updateLeaderBoard(); 
+
         if(flag)
             AddOrUpdateContactEmail(emailR.text);
         else{
@@ -83,6 +129,10 @@ public class Authentication : MonoBehaviour
             registerButton.SetActive(false);
             logoutButton.SetActive(true);
         }
+
+        PlayFabClientAPI.GetAccountInfo(
+            new GetAccountInfoRequest(), OnDataSuccess, OnPlayFaberror);
+
     }
 
     /// <summary>

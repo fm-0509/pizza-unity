@@ -127,12 +127,10 @@ public class Player : MonoBehaviour
         return nemico2distanza;
     }
      public static void finisci(){
-        AsyncOperation unload = SceneManager.UnloadSceneAsync(1);
-                SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(2);
     }
 
      public static void finisci2(){
-        AsyncOperation unload = SceneManager.UnloadSceneAsync(1);
         SceneManager.LoadScene(0);
     }
 

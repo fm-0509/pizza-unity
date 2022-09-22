@@ -262,6 +262,7 @@ public class PlayFabAuthService
                 {
                     //Report error back to subscriber
                     OnPlayFabError.Invoke(error);
+                    Authentication.erroreText();
                 }
             });
     }

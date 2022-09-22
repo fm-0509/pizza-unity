@@ -5,13 +5,13 @@ using UnityEngine.UI;
 using PlayFab;
 using PlayFab.ClientModels;
 using System.Runtime.CompilerServices;
+using System;
 
 public class leaderboard : MonoBehaviour
 {
 
-    public Text Top10Text;
-
     private static leaderboard instance;
+
 
     public static leaderboard Instance()
     {
@@ -20,56 +20,75 @@ public class leaderboard : MonoBehaviour
 
         return instance;
     }
-    
+
     private List<PlayerLeaderboardEntry> board;
 
     private string text;
 
-    public void updateLeaderBoard()
-    {
-        if (!PlayfabManager.IsLoggedIn)
-            return;
+    public Text yourScore;
 
-        PlayFabClientAPI.GetLeaderboard(
-                // Request
-                new GetLeaderboardRequest
-                {
-                    StatisticName = "level_leaderboard",
-                    StartPosition = 0,
-                    MaxResultsCount = 10
-                },
-                // Success
-                (GetLeaderboardResult result) =>
-                {
-                    var boardName = (result.Request as GetLeaderboardRequest).StatisticName;
-                    board = result.Leaderboard;
-                    Debug.Log(string.Format("GetLeaderboard completed: {0}", boardName));
-                    for (int i = 0; i < board.Count; i++)
-                        text += board[i].Position + " " + board[i].DisplayName + ":" + board[i].StatValue + "\n";
-
-                    Debug.Log(text);    
-                    this.Top10Text.text = text;
-                },
-                // Failure
-                (PlayFabError error) =>
-                {
-                    Debug.LogError("GetLeaderboard failed.");
-                    Debug.LogError(error.GenerateErrorReport());
-                }
-                );
-    }
-
+    private Text Score;
 
     void Start()
 
-    { 
-        this.Top10Text = this.GetComponent<Text>();
-        Debug.Log(this.Top10Text);
-        DontDestroyOnLoad(gameObject);
-        this.updateLeaderBoard();
+    {
+        DontDestroyOnLoad(this.gameObject);
+        updateLeaderBoard(this.gameObject.GetComponent<Text>(), yourScore);
     }
-    
-        
-   
+
+    public void updateLeaderBoard(Text to10text,Text yourScore)
+    {
+        if (PlayfabManager.IsLoggedIn)
+        {
+            Score=yourScore;
+            PlayFabClientAPI.GetLeaderboard(
+                    // Request
+                    new GetLeaderboardRequest
+                    {
+                        StatisticName = "level_leaderboard",
+                        StartPosition = 0,
+                        MaxResultsCount = 10
+                    },
+                    // Success
+                    (GetLeaderboardResult result) =>
+                    {
+                        var boardName = (result.Request as GetLeaderboardRequest).StatisticName;
+                        board = result.Leaderboard;
+                        Debug.Log(string.Format("GetLeaderboard completed: {0}", boardName));
+                        for (int i = 0; i < board.Count; i++)
+                        {
+                            text += "\t" + board[i].DisplayName + "\t\t\t" + board[i].StatValue + "\n";
+                        }
+                        to10text.text = text;
+                    },
+                    // Failure
+                    (PlayFabError error) =>
+                    {
+                        Debug.LogError("GetLeaderboard failed.");
+                        Debug.LogError(error.GenerateErrorReport());
+                    }
+                    );
+            PlayFabClientAPI.GetPlayerStatistics(
+                new GetPlayerStatisticsRequest(),
+                OnGetStatistics,
+                error => Debug.LogError(error.GenerateErrorReport())
+            );
+        }
+            else{
+            to10text.text="Error you need to login";
+        }
+
+
+    }
+
+    private void OnGetStatistics(GetPlayerStatisticsResult result)
+    {
+        Debug.Log("Received the following Statistics:");
+        foreach (var eachStat in result.Statistics)
+        {
+            if (eachStat.StatisticName == "level_leaderboard")
+                Score.text="\tYour score \t\t"+eachStat.Value;
+        }
+    }
 
 }
